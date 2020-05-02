@@ -1,4 +1,4 @@
-package question3;
+package tp1.question3;
 
 /**
  * NFP121 TpIntroduction, usage de BlueJ et du "Submitter".

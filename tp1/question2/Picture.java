@@ -1,8 +1,8 @@
-package question2;
+package tp1.question2;
 
-import question1.Circle;
-import question1.Square;
-import question1.Triangle;
+import tp1.question1.Circle;
+import tp1.question1.Square;
+import tp1.question1.Triangle;
 
 /**
  * This class represents a simple picture. You can draw the picture using the
@@ -19,7 +19,7 @@ public class Picture {
     private Square wall;
     private Square window;
     private Triangle roof;
-    private Circle sun;
+    private Circle sun, sun2;
 
     /**
      * Constructor for objects of class Picture
@@ -50,11 +50,20 @@ public class Picture {
         roof.makeVisible();
 
         sun = new Circle();
-        sun.changeColor("yellow");
+        sun.changeColor("blue");
         sun.moveHorizontal(180);
         sun.moveVertical(-10);
         sun.changeSize(60);
         sun.makeVisible();
+        sun.slowMoveVertical(20);
+        
+        sun2 = new Circle();
+        sun2.changeColor("yellow");
+        sun2.moveHorizontal(25);
+        sun2.moveVertical(-10);
+        sun2.changeSize(30);
+        sun2.makeVisible();
+        sun2.slowMoveVertical(20);
     }
 
     /**
@@ -82,5 +91,23 @@ public class Picture {
             sun.changeColor("yellow");
         }
     }
+    private int xPosition;
+    private int yPosition;
+    public void slowMoveVertical(int distance) {
+        int delta;
 
+        if (distance < 0) {
+            delta = -1;
+            distance = -distance;
+        } else {
+            delta = 1;
+        }
+
+        for (int i = 0; i < distance; i++) {
+            yPosition += delta;
+            draw();
+        }
+    }
 }
+
+

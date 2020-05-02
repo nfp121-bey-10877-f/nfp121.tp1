@@ -1,4 +1,4 @@
-package question1;
+package tp1.question1;
 
 import java.awt.*;
 
