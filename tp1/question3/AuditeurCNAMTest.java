@@ -72,13 +72,13 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
 
     /** Un test de la méthode toString(). */
     public void test_toString() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Dupont",
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Dupont",
                 "paul", "03-1234");
         assertEquals("Dupont paul login : dupont_p", auditeur1.toString());
     }
 
     public void test_nom_court() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("paul",
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("paul",
                 "pierre", "12345");
         assertEquals("paul", auditeur1.nom());
         assertEquals("pierre", auditeur1.prenom());
@@ -86,7 +86,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
     }
 
     public void test_nom_court_bis() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("thon",
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("thon",
                 "germon", "12345");
         assertEquals("Mr thon germon", "thon", auditeur1.nom());
         assertEquals("Mr thon germon", "germon", auditeur1.prenom());
@@ -94,7 +94,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
     }
 
     public void test_nom_avec_particule() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM(
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM(
                 "le Thon", "alban", "12345");
         assertEquals("Mr le Thon albacore ", "le Thon", auditeur1.nom());
         assertEquals("Mr le Thon albacore ", "alban", auditeur1.prenom());
@@ -103,7 +103,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
     }
 
     public void test_nom_compose() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM(
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM(
                 "Ton-Ton", "max", "12345");
         assertEquals("Mr Ton-Ton max ", "Ton-Ton", auditeur1.nom());
         assertEquals("Mr Ton-Ton max ", "max", auditeur1.prenom());
@@ -112,7 +112,7 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
 
     public void test_nom_court_avec_particule() {
 
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Te-Te",
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Te-Te",
                 "max", "12345");
         assertEquals("Mr Te-Te max ", "Te-Te", auditeur1.nom());
         assertEquals("Mr Te-Te max ", "max", auditeur1.prenom());
@@ -121,11 +121,39 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
     }
 
     public void test_nom_avec_accent() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Chloé",
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Chloé",
                 "chloé", "12345");
         assertEquals("Mme Chloé chloé ", "Chloé", auditeur1.nom());
         assertEquals("Mme Chloé chloé ", "chloé", auditeur1.prenom());
         assertEquals(" nom avec accent (é devient e) ? ", "chloe_c",
             auditeur1.login());
+    }
+    
+    //Test Login
+    public void testLogin() {
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Hé-darh",
+                "mm", "12345");
+        assertEquals(auditeur1.login(), "he_dar_m");
+    }
+    
+    @Test
+    void testNom() {
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Hé-darh",
+                "mm", "12345");
+        assertEquals(auditeur1.nom(), "Hé-darh");
+    }
+    
+    @Test
+    void testPrenom() {
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Hé-darh",
+                "mm", "12345");
+        assertEquals(auditeur1.prenom(), "mm");
+    }
+    
+    @Test
+    void testMatricul() {
+        tp1.question3.AuditeurCNAM auditeur1 = new tp1.question3.AuditeurCNAM("Hé-darh",
+                "mm", "12345");
+        assertEquals(auditeur1.matricule(), "121212");
     }
 }
