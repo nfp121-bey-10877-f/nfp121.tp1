@@ -98,7 +98,7 @@ public class AuditeurCNAM {
 		}
 
 
-		System.out.println(sixPremierLettreDuNom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_") +"_"+ premierLettreDuPrenom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_"));
+		return sixPremierLettreDuNom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_") +"_"+ premierLettreDuPrenom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_");
 	
     }
 
