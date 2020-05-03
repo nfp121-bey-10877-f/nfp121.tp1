@@ -45,28 +45,61 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        String sixPremierLettreDuNom = "";     //substring containing first 4 characters
-        String premierLettreDuPrenom = "";
-        
-        if (nom.length() > 6) 
-        {   
-    sixPremierLettreDuNom = this.nom.substring(0, 6);
-    } 
-    else
-    {
-    sixPremierLettreDuNom = this.nom;
-}     
-    
-if (prenom.length() > 1) 
-        {   
-    premierLettreDuPrenom = this.nom.substring(0, 1);
-    } 
-    else
-    {
-    premierLettreDuPrenom = this.nom;
-}        
+        	String sixPremierLettreDuNom = ""; 
+		String premierLettreDuPrenom = "";
+		StringBuffer result = new StringBuffer();
+		StringBuffer result2 = new StringBuffer();
 
-        return sixPremierLettreDuNom.toLowerCase()+"_"+premierLettreDuPrenom.toLowerCase();// à compléter
+		if(this.nom!=null && this.nom.length()!=0) {
+			int index = -1;
+			char c = (char)0;
+
+			String chars= "àâäéèêëîïôöùûüç";
+			String replace= "aaaeeeeiioouuuc";
+
+			for(int i=0; i<this.nom.length(); i++) {
+				c = this.nom.charAt(i);
+				if( (index=chars.indexOf(c))!=-1 )
+					result.append(replace.charAt(index));
+				else
+					result.append(c);
+			}
+		}
+
+		if(this.prenom!=null && this.prenom.length()!=0) {
+			int index = -1;
+			char c = (char)0;
+
+			String chars= "àâäéèêëîïôöùûüç";
+			String replace= "aaaeeeeiioouuuc";
+
+			for(int i=0; i<this.prenom.length(); i++) {
+				c = this.prenom.charAt(i);
+				if( (index=chars.indexOf(c))!=-1 )
+					result2.append(replace.charAt(index));
+				else
+					result2.append(c);
+			}
+		}
+
+		if (result.length() > 6) 
+		{   
+			sixPremierLettreDuNom = result.substring(0, 6);
+		}else {
+			sixPremierLettreDuNom = result.toString();
+		}
+
+		if (result2.length() > 1) 
+		{   
+			premierLettreDuPrenom = result2.substring(0, 1);
+		} 
+		else {
+			premierLettreDuPrenom = result2.toString();
+		}
+
+
+		System.out.println(sixPremierLettreDuNom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_") +"_"+ premierLettreDuPrenom.toLowerCase().replaceAll(" ", "_").replaceAll("-", "_"));
+	
     }
 
     /**
